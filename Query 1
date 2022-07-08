@@ -1,0 +1,6 @@
+SELECT patient.*, examined.D_Code, examined.Date, examined.Time, 
+examined.Location
+FROM examined 
+INNER JOIN patient 
+ON examined.P_Code = patient.P_Code
+WHERE Date="2020-11-04" AND D_Code=314;

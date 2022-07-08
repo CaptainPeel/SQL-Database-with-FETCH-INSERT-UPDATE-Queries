@@ -1,0 +1,11 @@
+SELECT operation.Date, patient.P_Code, patient.P_SurName, patient.P_FirstName,
+ doctor.D_code, doctor.D_SurName, doctor.D_FirstName
+FROM examined
+INNER JOIN operation
+ON examined.P_Code = operation.P_Code
+INNER JOIN doctor
+ON examined.D_Code = doctor.D_Code
+INNER JOIN patient
+ON operation.P_Code = patient.P_Code
+
+WHERE operation.Date BETWEEN "2020-11-21" AND "2020-11-24" AND examined.Date BETWEEN "2020-11-21" AND "2020-11-24"

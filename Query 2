@@ -1,0 +1,8 @@
+SELECT  operation.D_Code, doctor.d_SurName, doctor.D_FirstName, patient.*, operation.O_Code,
+ operation.Date, operation.Time, operation.Result, operation.O_Type
+FROM operation
+INNER JOIN doctor
+ON operation.D_Code = doctor.D_Code
+INNER JOIN patient
+ON operation.P_Code = patient.P_Code
+WHERE Date="2020-11-01";

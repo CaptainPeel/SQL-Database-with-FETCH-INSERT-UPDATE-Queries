@@ -1,0 +1,7 @@
+SELECT examined.*, doctor.D_SurName, doctor.D_FirstName, patient.P_SurName, patient.Address, patient.DoB
+FROM doctor
+INNER JOIN examined
+ON doctor.D_code = examined.D_code
+INNER JOIN patient
+on examined.P_code = patient.P_code
+WHERE P_SurName = 'Headache' AND Address = 'Rice Lane' AND DoB = "1949-12-20";

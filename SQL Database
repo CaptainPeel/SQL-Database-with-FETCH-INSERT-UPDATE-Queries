@@ -1,0 +1,99 @@
+create table patient(
+  P_Code integer, 
+  P_SurName varchar(100), 
+  P_FirstName varchar(100),
+  Sex varchar(100),
+  DoB date,
+  Occupation varchar(100),
+  Height varchar(100),
+  Weight varchar(100),
+  Address varchar(100),
+  MobileNum BigInt not null,
+  PRIMARY KEY (P_CODE)
+);
+
+insert into patient values (129,'McKenzie','Will','M'
+                            ,"1992-01-12",'Student',170,100,
+                            'London',5489635487);
+                            
+ insert into patient values (25,'Cooper','Simon','M'
+                            ,"1983-09-28",'Plasterer',192,135,
+                            'Cheshire',5489455487);
+                            
+ insert into patient values (493,'Cartwright','Jay','M'
+                            ,"1987-08-14",'Engineer',154,250,
+                            'Manchester',5489735487);
+                            
+insert into patient values (224,'Sutherland','Neil','M'
+                            ,"1980-01-29",'Footballer',201,200,
+                            'Liverpool',5489635499);
+                            
+insert into patient values (169,'Headache','Baddé','M'
+                            ,"1949-12-20",'Neurosurgeon',178,214,
+                            'Rice Lane',5489635488);
+
+
+create table doctor(
+  D_Code integer,
+D_SurName varchar(100), 
+D_FirstName varchar(100), 
+D_PrivateAddress varchar(100),
+ D_MobileNum BigInt not null,
+Department varchar(100),
+  PRIMARY KEY (D_Code)
+);
+
+
+insert into doctor values (444,'Shipman', 'Mick', 'Liverpool', 65465432188,'Neurology');
+insert into doctor values (172,'Suttcliffe', 'Peter', 'Bangor', 151542879631,'Psychologist');
+insert into doctor values (555,'West', 'Byrn', 'Cardiff', 66699987415,'Diagnostician');
+insert into doctor values (500,'Niceman', 'Fred',  'Manchester', 66699987415,'Practitioner');
+insert into doctor values (314,'Smartman', 'Harold', 'LJMU', 66258787415,'Practitioner');
+
+
+
+
+create table operation(
+  O_Code integer,
+  P_Code integer,
+  D_Code integer,
+  Date date,
+  Time time,
+  Result varchar(100),
+  O_Type varchar(100),
+  PRIMARY KEY(O_CODE),
+  FOREIGN KEY(P_Code) REFERENCES patient (P_Code),
+  FOREIGN KEY(D_Code) REFERENCES doctor (D_Code)
+  );
+
+insert into operation values (859, 129, 444, "2020-01-1", "15:00", 'Unsuccessful', 'Broken Arm');
+insert into operation values (763, 25, 172, "2020-07-3", "15:00", 'Successful', 'Broken Arm');
+insert into operation values (970, 224, 555, "2020-11-1", "15:00", 'Successful', 'Broken Arm');
+insert into operation values (948, 169, 172, "2020-11-1", "15:00", 'Successful', 'Broken Leg');
+insert into operation values (901, 493, 444, "2020-11-23", "11:00", 'Successful', 'Skull Fracture');
+insert into operation values (900, 169, 555, "2020-11-21", "11:00", 'Successful', 'Skull Fracture');
+insert into operation values (1000, 25, 172, "2020-11-24", "7:00", 'Successful', 'Colonoscopy');
+
+
+
+
+
+create table examined(
+  P_Code integer,
+  D_Code integer,
+  Date date, 
+  Time time, 
+  Location varchar(100),
+  FOREIGN KEY(P_Code) REFERENCES patient (P_Code),
+  FOREIGN KEY (D_Code) REFERENCES doctor (D_Code)
+);
+
+insert into examined values (129, 314, "2020-11-4", "13:00", 'Manchester');
+insert into examined values (25, 314, "2020-11-4", "16:00", 'Manchester');
+insert into examined values (224, 444, "2020-11-5", "16:00", 'Leeds');
+insert into examined values (169, 172, "2020-07-4", "11:00", 'Liverpool');
+insert into examined values (493, 500, "2020-11-23", "11:00", 'Lark Lane Surgery');
+insert into examined values (169, 555, "2020-11-21", "11:00", 'Lark Lane Surgery');
+insert into examined values (25, 172, "2020-11-24", "9:00", 'Lark Lane Surgery');
+
+

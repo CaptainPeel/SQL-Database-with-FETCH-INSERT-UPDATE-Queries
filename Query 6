@@ -1,0 +1,12 @@
+
+SELECT operation.O_Type, patient.P_SurName, patient.P_FirstName, patient.Address, patient.MobileNum, 
+doctor.D_SurName, doctor.D_FirstName, doctor.D_MobileNum
+FROM patient
+
+INNER JOIN operation
+ON patient.P_code = operation.P_Code
+
+INNER JOIN doctor
+ON operation.D_code = doctor.D_Code
+
+WHERE O_Type = 'Broken Arm';
